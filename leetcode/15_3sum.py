@@ -24,7 +24,7 @@ class Solution:
                 break
 
             while lo < hi:
-                sum = nums[i] + nums[lo] + nums[hi]
+                cur_sum = nums[i] + nums[lo] + nums[hi]
 
                 if sum < 0:
                     lo += 1
@@ -39,3 +39,4 @@ class Solution:
 
         unique_triplets = list(set(tuple(triplet) for triplet in result))
         return [list(triplet) for triplet in unique_triplets]
+    
