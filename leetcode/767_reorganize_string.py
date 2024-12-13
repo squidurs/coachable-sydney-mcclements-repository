@@ -3,11 +3,13 @@ import heapq
 
 
 class Solution1:
-    """Provides a solution to reorganize a string such that no two adjacent characters are the same, using a max-heap approach."""
+    """Provides a solution to reorganize a string such that no two
+    adjacent characters are the same, using a max-heap approach."""
     def reorganizeString(self, s: str) -> str:
         """Uses a max-heap to append two max count characters at a time.
         Character counts are only added to the heap if reorganization is possible
-        (max character count < half the string length), ensuring the final element can be appended without violating the adjacency rule."""
+        (max character count < half the string length), ensuring the final element
+        can be appended without violating the adjacency rule."""
 
 
         char_count = defaultdict(int)
@@ -57,9 +59,12 @@ class Solution1:
 
 
 class Solution2:
-    """Provides a solution to reorganize a string such that no two adjacent characters are the same, using a direct placement method."""
+    """Provides a solution to reorganize a string such that no two
+    adjacent characters are the same, using a direct placement method."""
     def reorganizeString(self, s: str) -> str:
-        """Counts character frequencies and directly places the most frequent character in even indices of the result array. Remaining characters are then filled into any remaining even indices first, then odd indices afterward."""
+        """Counts character frequencies and directly places the most frequent
+        character in even indices of the result array. Remaining characters are
+        then filled into any remaining even indices first, then odd indices afterward."""
 
         char_count = [0]*26
 
@@ -93,7 +98,3 @@ class Solution2:
                 char_count[i] -= 1
 
         return "".join(result)
-
-
-
-
