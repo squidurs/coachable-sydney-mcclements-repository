@@ -26,10 +26,10 @@ class Solution:
             while lo < hi:
                 cur_sum = nums[i] + nums[lo] + nums[hi]
 
-                if sum < 0:
+                if cur_sum < 0:
                     lo += 1
 
-                elif sum > 0:
+                elif cur_sum > 0:
                     hi -= 1
 
                 else:
@@ -39,4 +39,5 @@ class Solution:
 
         unique_triplets = list(set(tuple(triplet) for triplet in result))
         return [list(triplet) for triplet in unique_triplets]
+
     

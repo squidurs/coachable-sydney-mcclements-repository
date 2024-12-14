@@ -4,13 +4,15 @@ from typing import List
 class Solution:
 
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        """Groups anagram strings by calculating the character frequency of each string and using the frequency as a dictionary key to map anagrams together.
+        """Groups anagram strings by calculating the character frequency of each
+        string and using the frequency as a dictionary key to map anagrams together.
 
         Args:
             strs (List[str]): A list of input strings.
 
         Returns:
-            List[List[str]]: A list of groups, where each group is a list of strings that are anagrams of each other.
+            List[List[str]]: A list of groups, where each group is a list
+            of strings that are anagrams of each other.
         """
         anagrams = defaultdict(list)
 
