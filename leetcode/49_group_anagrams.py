@@ -28,3 +28,4 @@ class Solution:
             anagrams[char_count].append(word)
 
         return list(anagrams.values())
+    
