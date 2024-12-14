@@ -98,3 +98,4 @@ class Solution2:
                 char_count[i] -= 1
 
         return "".join(result)
+    
