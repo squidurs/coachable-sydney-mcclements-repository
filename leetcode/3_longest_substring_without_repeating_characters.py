@@ -23,3 +23,4 @@ class Solution:
             seen.add(s[right])
 
         return max_len
+    

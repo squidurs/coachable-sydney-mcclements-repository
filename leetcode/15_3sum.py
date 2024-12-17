@@ -39,5 +39,3 @@ class Solution:
 
         unique_triplets = list(set(tuple(triplet) for triplet in result))
         return [list(triplet) for triplet in unique_triplets]
-
-
