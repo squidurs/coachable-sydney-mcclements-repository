@@ -22,6 +22,9 @@ class Solution:
                 open (int): The number of remaining open parentheses to be added.
                 close (int): The number of remaining close parentheses to be added.
                 cur (List[str]): The current parentheses combination being built.
+
+            Side Effects:
+                Appends valid combinations of parentheses to the result list.
             """
 
             if open == 0 and close == 0:
@@ -40,4 +43,4 @@ class Solution:
 
         generate(n, n, [])
         return result
-    
+

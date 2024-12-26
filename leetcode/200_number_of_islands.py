@@ -27,12 +27,10 @@ class Solution:
             """
             if r < 0 or r >= m or c < 0 or c >= n or grid[r][c] == '0':
                 return
-            else:
-                grid[r][c] = '0'
-                dfs(r, c + 1) # right neighbor
-                dfs(r + 1, c) # bottom neighbor
-                dfs(r - 1, c) # top neighbor
-                dfs(r, c - 1) # left neighbor
+            grid[r][c] = '0'
+            directions = [(-1,0), (1,0), (0,1), (0, -1)]
+            for dr, dc in directions:
+                dfs(r + dr, c+ dc)
 
         for r in range(m):
             for c in range(n):
