@@ -2,13 +2,13 @@ from typing import List
 
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-        """_summary_
+        """Finds the length of the longest consecutive sequence in an unsorted list of integers.
 
         Args:
-            nums (List[int]): _description_
+            nums (List[int]): A list of integers.
 
         Returns:
-            int: _description_
+            int: The length of the longest consecutive sequence of integers.
         """
 
         num_set = set(nums)

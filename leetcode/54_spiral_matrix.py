@@ -2,13 +2,13 @@ from typing import List
 
 class Solution:
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
-        """_summary_
+        """Returns the elements of the given 2D matrix in spiral order.
 
         Args:
-            matrix (List[List[int]]): _description_
+            matrix (List[List[int]]): A 2D list representing the input matrix.
 
         Returns:
-            List[int]: _description_
+            List[int]: A list of integers representing the matrix elements in spiral order.
         """
 
         m, n = len(matrix), len(matrix[0])
