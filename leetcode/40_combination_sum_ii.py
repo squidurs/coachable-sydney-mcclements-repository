@@ -41,9 +41,8 @@ class Solution:
                 if i > start and candidates[i] == candidates[i-1]:
                     continue
                 if candidates[i] > target:
-                    break
+                    return
                 combo(i + 1, cur + [candidates[i]], target - candidates[i])
-            return
 
         combo(0, [], target)
         return result
