@@ -17,9 +17,9 @@ class Solution:
         """
 
         order = []
-        g = defaultdict(list)
-        for a,b in prerequisites:
-            g[a].append(b)
+        adj_list = defaultdict(list)
+        for source, target in prerequisites:
+            adj_list[source].append(target)
 
         UNVISITED, VISITING, VISITED = 0, 1, 2
         status = [UNVISITED] * numCourses
@@ -43,7 +43,7 @@ class Solution:
                 return True
             status[i] = VISITING
 
-            for prereq in g[i]:
+            for prereq in adj_list[i]:
                 if not dfs(prereq):
                     return False
 
