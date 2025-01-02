@@ -14,7 +14,7 @@ class Solution:
         num_set = set(nums)
         longest = 0
 
-        for num in nums:
+        for num in num_set:
             if num - 1 not in num_set:
                 length = 1
                 next_num = num + 1
