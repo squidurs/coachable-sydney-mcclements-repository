@@ -15,13 +15,17 @@ class Solution:
                        corresponding index.
         """
         n = len(nums)
-        prefix_product = 1
-        postfix_product = 1
-        answer = [0]*n
+        prefix_list = [1] * n
+        postfix_list = [1] * n
+        answer = [1] * n
+
+        for i in range(1, n):
+            prefix_list[i] = prefix_list[i-1] * nums[i-1]
+
+        for i in range(n-2,-1,-1):
+            postfix_list[i] = postfix_list[i+1] * nums[i+1]
+
         for i in range(n):
-            answer[i] = prefix_product
-            prefix_product *= nums[i]
-        for i in range(n-1,-1,-1):
-            answer[i] *= postfix_product
-            postfix_product *= nums[i]
+            answer[i] = prefix_list[i] * postfix_list[i]
+
         return answer
