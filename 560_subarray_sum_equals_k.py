@@ -14,17 +14,17 @@ class Solution:
         """
         prefixSums = {0:1}
         count = 0
-        curSum = 0
+        cur_sum = 0
 
         for i in range(len(nums)):
-            curSum += nums[i]
+            cur_sum += nums[i]
 
-            if curSum - k in prefixSums:
-                count += prefixSums[curSum - k]
+            if cur_sum - k in prefixSums:
+                count += prefixSums[cur_sum - k]
 
-            if curSum in prefixSums:
-                prefixSums[curSum] += 1
+            if cur_sum in prefixSums:
+                prefixSums[cur_sum] += 1
             else:
-                prefixSums[curSum] = 1
+                prefixSums[cur_sum] = 1
 
         return count
