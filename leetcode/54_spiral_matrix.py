@@ -13,11 +13,7 @@ class Solution:
 
         m, n = len(matrix), len(matrix[0])
         r, c = 0, 0
-        UP = (-1,0)
-        DOWN = (1,0)
-        LEFT = (0,-1)
-        RIGHT = (0,1)
-        DIRECTIONS = [RIGHT, DOWN, LEFT, UP]
+        DIRECTIONS = [(0, 1), (1, 0), (0, -1), (-1, 0)]  # RIGHT, DOWN, LEFT, UP
         cur_dir = 0
         visited = set()
         ans = []
@@ -44,5 +40,4 @@ class Solution:
             r, c = next_r, next_c
 
         return ans
-
-
+    

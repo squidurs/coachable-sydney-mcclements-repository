@@ -30,4 +30,4 @@ class Solution:
                 fuel = 0
 
         return start
-
+    

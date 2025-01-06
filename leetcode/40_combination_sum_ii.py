@@ -13,8 +13,8 @@ class Solution:
             target (int): The target sum to achieve with combinations of the candidate numbers.
 
         Returns:
-            List[List[int]]: A list of unique combinations, where each combination is a list of integers
-            that sum to the target.
+            List[List[int]]: A list of unique combinations, where each combination is a list of
+            integers that sum to the target.
         """
 
         result = []

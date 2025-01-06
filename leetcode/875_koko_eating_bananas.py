@@ -45,4 +45,4 @@ class Solution:
                 lo = k + 1
 
         return lo
-
+    

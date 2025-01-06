@@ -29,3 +29,4 @@ class Solution:
             answer[i] = prefix_list[i] * postfix_list[i]
 
         return answer
+    
