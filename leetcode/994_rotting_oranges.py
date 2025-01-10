@@ -47,12 +47,11 @@ class Solution:
 
         if fresh == 0:
             return minutes - 1
-        else:
-            return -1
+        return -1
 
     def orangesRotting2(self, grid: List[List[int]]) -> int:
         """Determines the minimum time required for all fresh oranges in a grid to rot."""
-                   
+
         fresh = 0
         q = deque()
         m, n = len(grid), len(grid[0])

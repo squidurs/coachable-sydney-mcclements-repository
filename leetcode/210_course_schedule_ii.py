@@ -8,8 +8,8 @@ class Solution:
 
         Args:
             numCourses (int): The total number of courses labeled from 0 to numCourses - 1.
-            prerequisites (List[List[int]]): A list of prerequisite pairs where each pair [a, b] means
-                course `b` is a prerequisite for course `a`.
+            prerequisites (List[List[int]]): A list of prerequisite pairs where each pair [a, b]
+            means course `b` is a prerequisite for course `a`.
 
         Returns:
             List[int]: A list of courses in the order they should be taken. If it is impossible

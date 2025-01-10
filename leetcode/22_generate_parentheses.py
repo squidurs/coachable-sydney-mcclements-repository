@@ -14,33 +14,32 @@ class Solution:
 
         result = []
 
-        def generate(open: int, close: int, cur: List[str]) -> None:
+        def generate(left: int, right: int, cur: List[str]) -> None:
             """
             Helper function to recursively generate valid parentheses combinations.
 
             Args:
-                open (int): The number of remaining open parentheses to be added.
-                close (int): The number of remaining close parentheses to be added.
+                left (int): The number of remaining left parentheses to be added.
+                right (int): The number of remaining right parentheses to be added.
                 cur (List[str]): The current parentheses combination being built.
 
             Side Effects:
                 Appends valid combinations of parentheses to the result list.
             """
 
-            if open == 0 and close == 0:
+            if left == 0 and right == 0:
                 result.append("".join(cur))
                 return
 
-            if open > 0:
+            if left > 0:
                 cur.append("(")
-                generate(open - 1, close, cur)
+                generate(left - 1, right, cur)
                 cur.pop()
 
-            if close > open:
+            if right > left:
                 cur.append(")")
-                generate(open, close - 1, cur)
+                generate(left, right - 1, cur)
                 cur.pop()
 
         generate(n, n, [])
         return result
-

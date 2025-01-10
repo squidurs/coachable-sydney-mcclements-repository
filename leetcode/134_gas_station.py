@@ -23,11 +23,11 @@ class Solution:
         fuel = 0
         start = 0
 
-        for i in range(len(gas)):
-            fuel += gas[i] - cost[i]
+        for i, (gas_amount, cost_amount) in enumerate(zip(gas,cost)):
+            fuel += gas_amount - cost_amount
             if fuel < 0:
                 start = i + 1
                 fuel = 0
 
         return start
-
+    
