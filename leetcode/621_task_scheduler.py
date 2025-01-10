@@ -45,19 +45,19 @@ class Solution:
         """
 
         count = Counter(tasks)
-        maxHeap = [-cnt for cnt in count.values()]
-        heapq.heapify(maxHeap)
+        max_heap = [-cnt for cnt in count.values()]
+        heapq.heapify(max_heap)
 
         time = 0
         tasks_on_hold = deque()
 
-        while maxHeap or tasks_on_hold:
+        while max_heap or tasks_on_hold:
             time += 1
-            if maxHeap:
-                cnt = 1 + heapq.heappop(maxHeap)
+            if max_heap:
+                cnt = 1 + heapq.heappop(max_heap)
                 if cnt != 0:
                     tasks_on_hold.append([cnt, time + n])
             if tasks_on_hold and tasks_on_hold[0][1] == time:
-                heapq.heappush(maxHeap, tasks_on_hold.popleft()[0])
+                heapq.heappush(max_heap, tasks_on_hold.popleft()[0])
 
         return time
