@@ -16,13 +16,12 @@ class Solution:
         #sort by meeting start time
         intervals.sort()
         #min-heap to track end times of meetings currently occupying rooms
-        meeting_rooms_heap = [intervals[0][1]]
+        min_end_times = [intervals[0][1]]
 
         for start, end in intervals[1:]:
-            if start >= meeting_rooms_heap[0]:
-                heapq.heappop(meeting_rooms_heap)
-            heapq.heappush(meeting_rooms_heap, end)
+            if start >= min_end_times[0]:
+                heapq.heappop(min_end_times)
+            heapq.heappush(min_end_times, end)
 
-        return len(meeting_rooms_heap)
-
-
+        return len(min_end_times)
+    
