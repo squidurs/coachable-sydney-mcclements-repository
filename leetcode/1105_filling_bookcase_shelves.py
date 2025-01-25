@@ -30,6 +30,9 @@ class Solution:
                 if width > shelfWidth:
                     break
 
+                # For each group of books 'j' to 'i', calculate the height of the bookshelf
+                # (max height of books 'j' to 'i' + dp[j-1])
+                # Store the minimum height of all configurations at dp[i].
                 dp[i] = min(dp[i], dp[j-1] + max_height)
 
         return dp[n]
