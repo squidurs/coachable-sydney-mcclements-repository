@@ -20,6 +20,8 @@ class Solution:
             width = 0
             max_height = 0
 
+            # For each book 'i', find the optimal total height by considering all valid
+            # groupings of books 'i-j' on the same shelf
             for j in range(i, 0, -1):
                 book_width, book_height = books[j-1]
                 width += book_width
