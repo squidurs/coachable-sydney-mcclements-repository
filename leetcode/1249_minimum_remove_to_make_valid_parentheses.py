@@ -10,27 +10,27 @@ class Solution:
         """
 
         str_builder = []
-        left_parentheses = 0
+        left_parentheses_count = 0
 
         for char in s:
             if char == "(":
-                left_parentheses += 1
+                left_parentheses_count += 1
                 str_builder.append(char)
             elif char == ")":
-                if left_parentheses > 0:
-                    left_parentheses -= 1
+                if left_parentheses_count > 0:
+                    left_parentheses_count -= 1
                     str_builder.append(char)
             else:
                 str_builder.append(char)
 
-        if left_parentheses ==  0:
+        if left_parentheses_count ==  0:
             return ''.join(str_builder)
 
-        res = []
+        res_builder = []
         for char in reversed(str_builder):
-            if char == "(" and left_parentheses > 0:
-                left_parentheses -= 1
+            if char == "(" and left_parentheses_count > 0:
+                left_parentheses_count -= 1
             else:
-                res.append(char)
+                res_builder.append(char)
 
-        return ''.join(reversed(res))
+        return ''.join(reversed(res_builder))
