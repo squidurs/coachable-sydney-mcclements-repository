@@ -26,7 +26,7 @@ class Solution:
         if not root:
             return []
 
-        column_items = defaultdict(list)
+        column_to_nodes_map = defaultdict(list)
         queue = deque([(0,root)])
 
         res = []
@@ -37,17 +37,17 @@ class Solution:
         while queue:
             col, node = queue.popleft()
 
-            column_items.append(node.val)
+            if node is None:
+                continue
+
+            column_to_nodes_map[col].append(node.val)
             leftmost_col = min(leftmost_col, col)
             rightmost_col = max(rightmost_col, col)
 
-            if node.left:
-                queue.append((col - 1, node.val))
-
-            if node.right:
-                queue.append(col + 1, node.val)
+            queue.append((col - 1, node.left))
+            queue.append((col + 1, node.right))
 
         for column in range(leftmost_col, rightmost_col + 1):
-            res.append(column_items[column])
+            res.append(column_to_nodes_map[column])
 
         return res
