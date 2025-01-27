@@ -1,6 +1,45 @@
 from typing import List
 
 class Solution:
+
+    def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        """Generates all unique subsets of a list of integers, including handling duplicates.
+
+        Args:
+            nums (List[int]): A list of integers, which may contain duplicates.
+
+        Returns:
+            List[List[int]]: A list of unique subsets of the input list.
+        """
+
+        res = []
+
+        def backtrack(i: int, subset: List[int]) -> None:
+            """Recursively generates subsets by including or excluding each element.
+
+            Args:
+                i (int): The current index in the list to process.
+                subset (List[int]): The current subset being built.
+            """
+            if i == len(nums):
+                res.append(tuple(subset))  # store subsets as tuples for deduplication
+                return
+
+            # Include nums[i]
+            backtrack(i + 1, subset + [nums[i]])
+
+            # Exclude nums[i]
+            backtrack(i + 1, subset)
+
+        backtrack(0, [])
+
+        unique_subsets = set(res) # Remove duplicates by converting to a set
+        # Convert the set of tuples back into a list of lists
+        result = [list(subset) for subset in unique_subsets]
+
+        return result
+
+
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
         """Generates all possible subsets of a list of integers, ensuring no duplicate subsets.
 
