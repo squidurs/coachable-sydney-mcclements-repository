@@ -28,7 +28,7 @@ class Solution:
                 elif current_operator == '*':
                     stack[-1] *= integer
                 elif current_operator == '/':
-                    stack[-1] //= integer
+                    stack[-1] = int(stack[-1] / integer)
                 current_operator = cur_char
                 integer = 0
             i += 1
