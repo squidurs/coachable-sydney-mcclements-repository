@@ -40,6 +40,40 @@ class Solution:
 
         return res
 
+    def dfsDepthSum(self, nestedList: List[NestedInteger]) -> int:
+        """
+        Computes the depth-weighted sum of all integers in the nested list.
+
+        Args:
+            nestedList (List[NestedInteger]): The nested list.
+
+        Returns:
+            int: The total weighted sum.
+        """
+        def dfs(nested_list: List[NestedInteger], depth) -> int:
+            """Recursively computes the depth-weighted sum of all integers in a nested list.
+
+            The 'res' for a given level is the sum of the totals from its children (sub-lists or integers),
+            where each integer is multiplied by its depth.
+
+            Args:
+                nested_list (List[NestedInteger]): The current level of the nested list.
+                depth (int): The depth of the current level in the nested list.
+
+            Returns:
+                int: The total weighted sum of all integers at this level and deeper.
+        """
+            res = 0
+            for el in nested_list:
+                if el.isInteger():
+                    res += el.getInteger() * depth
+                else:
+                    res += dfs(el.getList(), depth + 1) # Recur for the inner list with increased depth
+            return res
+
+        return dfs(nestedList, 1)
+
+
     def depthSum2(self, nestedList: List[NestedInteger]) -> int:
         """
         Calculates the weighted sum of integers in a nested list based on their depth.
@@ -62,5 +96,5 @@ class Solution:
                 else:
                     queue.extend(cur.getList())
             depth += 1
-            
+
         return res
