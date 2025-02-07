@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Tuple
 
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
@@ -20,15 +20,34 @@ class Solution:
         Returns:
             int: The diameter of the tree.
         """
-        self.diameter = 0
+        def height_and_diameter(node: Optional[TreeNode]) -> Tuple[int, int]:
+            """Helper function to compute height and diameter for the subtree rooted at 'node'
 
-        def dfs_height(node: TreeNode):
+            Recursive relation:
+            - If the node is None, return (0, 0).
+            - Otherwise, compute the height and diameter for the left and right subtrees.
+            - The height of the current node is 1 + the maximum height of its left and right subtrees.
+            - The diameter at the current node is the maximum of:
+                a. left_height + right_height (the longest path passing through the node),
+                b. left_diameter (max diameter found in the left subtree)
+                c. right_diameter (max diameter found in the right subtree)
+
+            Args:
+                node (Optional[TreeNode]): The root of the current subtree.
+
+            Returns:
+                Tuple[int, int]: height, diameter of the subtree
+            """
             if not node:
-                return 0
-            left_height = dfs_height(node.left)
-            right_height = dfs_height(node.right)
-            self.diameter = max(self.diameter, left_height + right_height)
-            return 1 + max(left_height, right_height)
+                return 0, 0
 
-        dfs_height(root)
-        return self.diameter
+            left_height, left_diameter = height_and_diameter(node.left)
+            right_height, right_diameter = height_and_diameter(node.right)
+
+            height = 1 + max(left_height, right_height)
+            diameter = max(left_height + right_height, left_diameter, right_diameter)
+
+            return height, diameter
+
+        _, diameter = height_and_diameter(root)
+        return diameter
