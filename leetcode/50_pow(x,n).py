@@ -4,11 +4,11 @@ class Solution:
         Computes x raised to the power n using exponentiation by squaring.
 
         Args:
-            x (float): The base.
-            n (int): The exponent (may be negative)
+            x (float): The base
+            n (int): The exponent
 
         Returns:
-            float: The computed power.
+            float: The computed power
         """
         if x == 0:
             return 0
