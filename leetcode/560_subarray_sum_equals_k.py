@@ -12,19 +12,17 @@ class Solution:
         Returns:
             int: The count of subarrays whose sum equals k
         """
-        prefixSums = {0:1}
-        count = 0
+        prefix_sum_counts = {0:1}
         cur_sum = 0
+        count = 0
 
-        for i in range(len(nums)):
-            cur_sum += nums[i]
-
-            if cur_sum - k in prefixSums:
-                count += prefixSums[cur_sum - k]
-
-            if cur_sum in prefixSums:
-                prefixSums[cur_sum] += 1
+        for num in nums:
+            cur_sum += num
+            if cur_sum - k in prefix_sum_counts:
+                count += prefix_sum_counts[cur_sum - k]
+            if cur_sum in prefix_sum_counts:
+                prefix_sum_counts[cur_sum] += 1
             else:
-                prefixSums[cur_sum] = 1
+                prefix_sum_counts[cur_sum] = 1
 
         return count
