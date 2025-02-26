@@ -2,11 +2,17 @@ import unittest
 from io import StringIO
 import sys
 
+class Node:
+    def __init__(self, key: str, value: int):
+        self.key = key
+        self.value = value
+        self.next = None
+
 class HashTable:
 
     def __init__(self, max_size: int):
         self.max_size = max_size
-        self.table = [[] for _ in range(max_size)]
+        self.table = [None for _ in range(max_size)]
         self.size = 0
 
     def _hash(self, key: str) -> int:
@@ -17,22 +23,39 @@ class HashTable:
 
     def put(self, key: str, value: int) -> None:
         idx = self._hash(key)
-        for i, (table_key, _) in enumerate(self.table[idx]):
-            if table_key == key:
-                self.table[idx][i] = (key, value)
-                return
-        if self.size == self.max_size:
+        new_node = Node(key, value)
+
+        if self.table[idx]:
+            cur = self.table[idx]
+            while cur:
+                if cur.key == key:
+                    cur.value = value
+                    return
+                if not cur.next:
+                    break
+                cur = cur.next
+
+        if self.size >= self.max_size:
             print("Error. Table full.")
+            return
+        if not self.table[idx]:
+            self.table[idx] = new_node
         else:
-            self.table[idx].append((key, value))
-            self.size += 1
+            cur.next = new_node
+            
+        self.size += 1
+
 
     def get(self, key) -> int:
         idx = self._hash(key)
-        for table_key, value in self.table[idx]:
-            if table_key == key:
-                return value
+        cur = self.table[idx]
+
+        while cur:
+            if cur.key == key:
+                return cur.value
+            cur = cur.next
         print("Key not found")
+
 
 class TestHashTable(unittest.TestCase):
     def test_create(self):
@@ -45,22 +68,25 @@ class TestHashTable(unittest.TestCase):
         hash_table = HashTable(7)
         hash_table.put("a", 1)
 
-        self.assertEqual(hash_table.table[6][0], ("a", 1))
+        self.assertEqual(hash_table.table[6].key, "a")
+        self.assertEqual(hash_table.table[6].value, 1)
 
     def test_put_collision(self):
         hash_table = HashTable(7)
         hash_table.put("ab", 1)
         hash_table.put("ba", 2)
 
-        self.assertEqual(hash_table.table[6][0], ("ab", 1))
-        self.assertEqual(hash_table.table[6][1], ("ba", 2))
+        self.assertEqual(hash_table.table[6].key, "ab")
+        self.assertEqual(hash_table.table[6].value, 1)
+        self.assertEqual(hash_table.table[6].next.key, "ba")
+        self.assertEqual(hash_table.table[6].next.value, 2)
 
     def test_change_value(self):
         hash_table = HashTable(7)
         hash_table.put("a", 1)
         hash_table.put("a", 2)
 
-        self.assertEqual(hash_table.table[6][0], ("a", 2))
+        self.assertEqual(hash_table.table[6].value, 2)
 
     def test_put_at_capacity(self):
         hash_table = HashTable(1)
