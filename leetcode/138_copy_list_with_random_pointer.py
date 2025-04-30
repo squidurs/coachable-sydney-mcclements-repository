@@ -14,7 +14,7 @@ class Node:
 
 
 class Solution:
-    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+    def copyRandomList(self, head: Optional[Node]) -> Optional[Node]:
         """
         Creates a deep copy of a linked list where each node has an additional random pointer.
 
