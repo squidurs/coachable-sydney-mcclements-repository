@@ -23,9 +23,6 @@ class Solution:
             for char in word:
                 char_count[ord(char) - ord('a')] += 1
 
-            char_count = ''.join(chr(i + ord('a')) * char_count[i] for i in range(26))
-
-            anagrams[char_count].append(word)
+            anagrams[tuple(char_count)].append(word)
 
         return list(anagrams.values())
-    
